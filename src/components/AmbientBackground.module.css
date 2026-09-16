@@ -1,0 +1,118 @@
+/* AmbientBackground.module.css — v2 with breathing animations */
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── Blob 1 — large warm amber, top-left, drifts + breathes ── */
+.blob1 {
+  position: absolute;
+  width: 70vw;
+  height: 70vw;
+  top: -25%;
+  left: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(201, 129, 58, 0.09) 0%,
+    transparent 68%
+  );
+  animation:
+    drift1   32s ease-in-out infinite alternate,
+    breathe1 8s  ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Blob 2 — smaller, bottom-right ── */
+.blob2 {
+  position: absolute;
+  width: 45vw;
+  height: 45vw;
+  bottom: -12%;
+  right: -8%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(180, 110, 40, 0.07) 0%,
+    transparent 65%
+  );
+  animation:
+    drift2   40s ease-in-out infinite alternate,
+    breathe2 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Blob 3 — very subtle center warm fill ── */
+.blob3 {
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  top: 28%;
+  left: 22%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(58, 44, 26, 0.55) 0%,
+    transparent 60%
+  );
+  animation:
+    drift3   48s ease-in-out infinite alternate,
+    breathe3 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Pulse orb — very subtle center heartbeat ── */
+.pulse {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(201, 129, 58, 0.045) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  animation: pulseOrb 6s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── Drift keyframes ── */
+@keyframes drift1 {
+  from { transform: translate(0,    0)    scale(1); }
+  to   { transform: translate(9%,  13%)  scale(1.14); }
+}
+@keyframes drift2 {
+  from { transform: translate(0,    0)    scale(1); }
+  to   { transform: translate(-11%, -9%) scale(1.1); }
+}
+@keyframes drift3 {
+  from { transform: translate(0,   0)    scale(1); }
+  to   { transform: translate(6%, -7%)  scale(0.9); }
+}
+
+/* ── Breathing keyframes (opacity pulse) ── */
+@keyframes breathe1 {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+@keyframes breathe2 {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+@keyframes breathe3 {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
+}
+
+/* ── Pulse orb — slow heartbeat scale + opacity ── */
+@keyframes pulseOrb {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.6; }
+  50%       { transform: translate(-50%, -50%) scale(1.35); opacity: 1;   }
+}
