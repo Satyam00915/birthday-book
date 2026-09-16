@@ -130,7 +130,7 @@ export default function BookCover({ onOpen }) {
             opacity: 0.85,
             lineHeight: 1.3,
           }}>
-            Memory<br />Book
+            Ruchiii<br />
           </h2>
           <div style={{ width: 60, height: 1, background: "var(--col-amber-dim)", opacity: 0.6 }} />
           <p style={{
